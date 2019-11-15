@@ -1,6 +1,9 @@
 node{    
         String credentialsId = 'vidawsCred'
 
+        def tfHome = tool name: 'Terraform', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
+        env.PATH = "${tfHome}:${env.PATH}"
+
         stage("terraform started"){
          
              sh 'echo "started..." '
