@@ -25,11 +25,8 @@ node{
         }
 
        stage("terraform ended"){
-         steps{
              sh 'echo "ended..." '
-           }
          }
    
-}
 
 }
