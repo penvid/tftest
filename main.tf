@@ -28,6 +28,20 @@ provider "aws" {
    profile = "default"
 }
 
+resource "random_id" "example_bucket_id" {
+   byte_length = 2
+}
+
+resource "aws_s3_bucket" "example_bucket" {
+   bucket = "myvid-${random_id.example_bucket_id.dec}"
+   acl = "private"
+   force_destroy = true
+
+   tags = {
+       Name = "Myvidbuckete"
+   }
+}
+
 resource "aws_security_group" "instance"{
     name = "terraform-example-instance"
 
@@ -144,9 +158,9 @@ resource "aws_elb" "example" {
 #   description = "The public IP of the web server"
 #}
 
-#output "clb_dns_name" {
-#   value = aws_elb.example.dns_name
-#   description = "The domain name of the loda balancer"
-#}
+output "clb_dns_name" {
+   value = aws_elb.example.dns_name
+   description = "The domain name of the loda balancer"
+}
 
 

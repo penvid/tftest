@@ -14,19 +14,39 @@ node{
 
        stage('terraform init'){
           
-           sh 'terraform init'
+          withCredentials([[
+              $class: 'AmazonWebServicesCredentialsBinding',
+              accessKeyVariable: 'AWS_ACCESS_KEY_ID', 
+              credentialsId: 'vidawsCred', 
+             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                  sh 'terraform init'
+             }
           
         }
 
-       stage('terraform execute'){
-          
-           sh 'terraform apply'
-         
+        stage('terraform plan'){
+
+          withCredentials([[
+              $class: 'AmazonWebServicesCredentialsBinding',
+              accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+              credentialsId: 'vidawsCred',
+             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                  sh 'terraform plan'
+             }
+
         }
 
-       stage("terraform ended"){
-             sh 'echo "ended..." '
-         }
-   
 
-}
+      stage('terraform apply'){
+
+          withCredentials([[
+              $class: 'AmazonWebServicesCredentialsBinding',
+              accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+              credentialsId: 'vidawsCred',
+             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                  sh 'terraform apply'
+             }
+
+        }
+       
+}         
