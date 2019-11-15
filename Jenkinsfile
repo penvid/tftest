@@ -1,7 +1,6 @@
-
-node{
-
-   stages{
+pipeline{
+     agent any
+    stages{
         stage("terraform started"){
          steps{
              sh 'echo "started..." '
@@ -32,7 +31,6 @@ node{
            }
          }
    
-
-   }
+}
 
 }
