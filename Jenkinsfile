@@ -1,8 +1,10 @@
 node{    
         String credentialsId = 'vidawsCred'
 
-        def tfHome = tool name: 'Terraform', type: 'Terraform'
-        sh "${tfHome}/terraform -version"
+         def tfHome = tool name: 'Terraform'
+         env.PATH = "${tfHome}:${env.PATH}"
+
+         sh "terraform -version"
 
         stage("terraform started"){
          
