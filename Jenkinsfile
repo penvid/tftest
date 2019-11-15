@@ -15,13 +15,13 @@ pipeline{
 
        stage('terraform init'){
           steps{
-              sh '/var/lib/jenkins/workspace/firsttf/ terraform init'
+              sh '/var/lib/jenkins/workspace/firsttf/terraform init'
           }
         }
 
        stage('terraform execute'){
           steps{
-              sh '/var/lib/jenkins/workspace/firsttf/ terraform apply'
+              sh '/var/lib/jenkins/workspace/firsttf/terraform apply'
           }
         }
 
