@@ -15,13 +15,13 @@ pipeline{
 
        stage('terraform init'){
           steps{
-              sh 'sudo /root/formactfproj/terraform init'
+              sh '/var/lib/jenkins/workspace/firsttf/terraform init'
           }
         }
 
        stage('terraform execute'){
           steps{
-              sh 'sudo /root/formactfproj/terraform apply'
+              sh '/var/lib/jenkins/workspace/firsttf/terraform apply'
           }
         }
 
