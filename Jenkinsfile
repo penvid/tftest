@@ -1,28 +1,27 @@
-pipeline{
-     agent any
-    stages{
+node{    
+
         stage("terraform started"){
-         steps{
+         
              sh 'echo "started..." '
            }
             
-         }
+        
        stage('git pull'){
-          steps{
+          
               git 'https://github.com/penvid/tftest.git'
           }
-        }
+        
 
        stage('terraform init'){
-          steps{
-              sh '/var/lib/jenkins/workspace/firsttf/terraform init'
-          }
+          
+              script: "terraform init"
+          
         }
 
        stage('terraform execute'){
-          steps{
-              sh '/var/lib/jenkins/workspace/firsttf/terraform apply'
-          }
+          
+            script: "terraform apply"
+         
         }
 
        stage("terraform ended"){
