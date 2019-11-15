@@ -20,7 +20,7 @@ node{
           }
         }
 
-       stage('terraform execute){
+       stage('terraform execute'){
           steps{
               sh 'sudo /root/formactfproj/terraform apply'
           }
