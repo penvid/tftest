@@ -14,13 +14,13 @@ node{
 
        stage('terraform init'){
           
-              script: "terraform init"
+           sh 'terraform init'
           
         }
 
        stage('terraform execute'){
           
-            script: "terraform apply"
+           sh 'terraform apply'
          
         }
 
