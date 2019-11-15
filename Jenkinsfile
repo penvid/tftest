@@ -50,7 +50,7 @@ node{
               accessKeyVariable: 'AWS_ACCESS_KEY_ID',
               credentialsId: credentialsId,
              secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-                  sh 'terraform apply'
+                  sh 'terraform apply -auto-approve'
              }
 
         }
