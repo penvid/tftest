@@ -8,9 +8,9 @@ node{
            }
             
          }
-       stage('git clone'){
+       stage('git pull'){
           steps{
-              git clone https://github.com/penvid/tftest.git
+              git 'https://github.com/penvid/tftest.git'
           }
         }
 
@@ -20,9 +20,9 @@ node{
           }
         }
 
-       stage('terraform init'){
+       stage('terraform execute){
           steps{
-              sh 'sudo /root/formactfproj/terraform plan'
+              sh 'sudo /root/formactfproj/terraform apply'
           }
         }
 
